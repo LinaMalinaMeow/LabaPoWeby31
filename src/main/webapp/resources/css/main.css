@@ -1,15 +1,15 @@
 .clicked{
-    border: 2px solid #f60e0e;
-    background: #4eef21;
+    border: 2px solid #0a0a0a;
+    background: #f80f45;
 }
 
-/*body {*/
-/*    background-image: url("#{resource['img/raspberry.gif']}");*/
-/*    background-repeat: no-repeat;*/
-/*    background-attachment: fixed;*/
-/*    background-position: center;*/
-/*    background-size: cover;*/
-/*}*/
+body {
+    background-image: url("#{resource['gif/raspberry.gif']}");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
 
 body {
     /*background-image: url('images/bgi.png');*/
@@ -209,4 +209,58 @@ a {
 
 .input_form_button_x {
     font-size: 150%;
+}
+
+.input-div {
+    display: flex;
+    flex-flow: row;
+}
+
+.canvas {
+    flex: 1.5
+}
+
+.form {
+    flex: 1
+}
+
+.row {
+    display: flex;
+    flex-flow: row;
+}
+
+.x-div {
+    flex: 1;
+}
+
+.result_table {
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+}
+
+.canvas, .coordinates-x, .coordinates-y, .coordinates-r, .result_table {
+    background: rgba(255, 255, 255, 0.75);
+    border: 2px solid black;
+    border-collapse: collapse;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.index_menu_link {
+    background: rgba(255, 255, 255, 0.75);
+    border-radius: 10px;
+    border: 2px solid black;
+    font-size: 30px;
+}
+
+.main_menu_link {
+    background: rgba(255, 255, 255, 0.75);
+    border: 2px solid black;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.date-time {
+    margin-top: 15vh;
+    margin-bottom: 15vh;
 }

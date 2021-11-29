@@ -4,7 +4,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 
@@ -15,104 +14,120 @@
     </ui:define>
 
     <ui:define name="main">
-        <div>
-            <ui:include src="templates/canvas.html"/>
-        </div>
-        <h:form id="newEmployeeForm">
-            <div>
-                <h:outputLabel styleClass="" value="Координата Х:"/>
-                <ul>
-                    <li>
-                        <h:commandButton styleClass="x" id="x-button1"
-                                         type="button" value="-5"/>
-                    </li>
-                    <li>
-                        <h:commandButton styleClass="x" id="x-button2"
-                                         type="button" value="-4"/>
-                    </li>
-                    <li>
-                        <h:commandButton styleClass="x" id="x-button3"
-                                         type="button" value="-3"/>
-                    </li>
-                    <li>
-                        <h:commandButton styleClass="x" id="x-button4"
-                                         type="button" value="-2"/>
-                    </li>
-                    <li>
-                        <h:commandButton styleClass="x" id="x-button5"
-                                         type="button" value="-1"/>
-                    </li>
-                    <li>
-                        <h:commandButton styleClass="x" id="x-button6"
-                                         type="button" value="0"/>
-                    </li>
-                    <li>
-                        <h:commandButton styleClass="x" id="x-button7"
-                                         type="button" value="1"/>
-                    </li>
-                    <li>
-                        <h:commandButton styleClass="x" id="x-button8"
-                                         type="button" value="2"/>
-                    </li>
-                    <li>
-                        <h:commandButton styleClass="x" id="x-button9"
-                                         type="button" value="3"/>
-                    </li>
-                </ul>
-                <div id="wrong_field_X" class="wrong"></div>
+        <div class="input-div">
+            <div class="canvas">
+                <ui:include src="templates/canvas.html"/>
             </div>
-            <div>
-                <h:outputLabel styleClass="" value="Y"/>
-                <h:inputText styleClass="y" id="y"
-                             value="#{exampleBean.newEmployee.y}">
-                </h:inputText>
-                <div id="wrong_field_Y" class="wrong"></div>
-            </div>
-            <div>
-                <label>1</label>
-                <h:selectBooleanCheckbox class="r"
-                                         itemLabel="1" widgetVar="checkBox1"
-                                         id="r1">
-                </h:selectBooleanCheckbox>
-                <label>1.5</label>
-                <h:selectBooleanCheckbox class="r"
-                                         itemLabel="1.5" widgetVar="checkBox2"
-                                         id="r15">
-                </h:selectBooleanCheckbox>
-                <label>2</label>
-                <h:selectBooleanCheckbox class="r"
-                                         itemLabel="2" widgetVar="checkBox3"
-                                         id="r2">
-                </h:selectBooleanCheckbox>
-                <label>2.5</label><h:selectBooleanCheckbox class="r"
-                                                           itemLabel="2.5" widgetVar="checkBox4"
-                                                           id="r25">
-            </h:selectBooleanCheckbox>
-                <label>3</label>
-                <h:selectBooleanCheckbox class="r"
-                                         itemLabel="3" widgetVar="checkBox5"
-                                         id="r3">
-                </h:selectBooleanCheckbox>
-                <div id="wrong_field_R" class="wrong"></div>
-            </div>
-            <h:panelGroup styleClass="hidden_x">
-                <h:inputHidden value="#{exampleBean.newEmployee.x}">
-                </h:inputHidden>
-            </h:panelGroup>
-            <h:panelGroup styleClass="hidden_r">
-                <h:inputHidden value="#{exampleBean.newEmployee.r}">
-                </h:inputHidden>
-            </h:panelGroup>
-            <h:commandButton value="Добавить" styleClass="submit input_form_control_buttons_button_submit"
-                             action="#{exampleBean.addEmployee()}">
-                <f:ajax execute="newEmployeeForm" render="employeeTable"/>
-            </h:commandButton>
+            <h:form id="newEmployeeForm" styleClass="form">
+                <div class="coordinates">
+                    <div class="coordinates-x">
+                        <h:outputLabel styleClass="" value="Координата Х:"/>
+                        <div class="row">
+                            <div class="x-div">
+                                <h:commandButton styleClass="x" id="x-button1"
+                                                 type="button" value="-5"/>
+                            </div>
+                            <div class="x-div">
+                                <h:commandButton styleClass="x" id="x-button2"
+                                                 type="button" value="-4"/>
+                            </div>
+                            <div class="x-div">
+                                <h:commandButton styleClass="x" id="x-button3"
+                                                 type="button" value="-3"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="x-div">
+                                <h:commandButton styleClass="x" id="x-button4"
+                                                 type="button" value="-2"/>
+                            </div>
+                            <div class="x-div">
+                                <h:commandButton styleClass="x" id="x-button5"
+                                                 type="button" value="-1"/>
+                            </div>
+                            <div class="x-div">
+                                <h:commandButton styleClass="x" id="x-button6"
+                                                 type="button" value="0"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="x-div">
+                                <h:commandButton styleClass="x" id="x-button7"
+                                                 type="button" value="1"/>
+                            </div>
+                            <div class="x-div">
+                                <h:commandButton styleClass="x" id="x-button8"
+                                                 type="button" value="2"/>
+                            </div>
+                            <div class="x-div">
+                                <h:commandButton styleClass="x" id="x-button9"
+                                                 type="button" value="3"/>
+                            </div>
+                        </div>
+                        <div id="wrong_field_X" class="wrong"></div>
+                    </div>
+                    <div class="coordinates-y">
+                        <h:outputLabel styleClass="" value="Координата Y:"/>
+                        <div>
+                            <h:inputText styleClass="y" id="y"
+                                         value="#{exampleBean.newEmployee.y}">
+                            </h:inputText>
+                        </div>
+                        <div id="wrong_field_Y" class="wrong"></div>
+                    </div>
+                    <div class="coordinates-r">
+                        <h:outputLabel styleClass="" value="Радиус:"/>
+                        <div>
+                            <label>1</label>
+                            <h:selectBooleanCheckbox class="r"
+                                                     itemLabel="1" widgetVar="checkBox1"
+                                                     id="r1">
+                            </h:selectBooleanCheckbox>
+                            <label>1.5</label>
+                            <h:selectBooleanCheckbox class="r"
+                                                     itemLabel="1.5" widgetVar="checkBox2"
+                                                     id="r15">
+                            </h:selectBooleanCheckbox>
+                            <label>2</label>
+                            <h:selectBooleanCheckbox class="r"
+                                                     itemLabel="2" widgetVar="checkBox3"
+                                                     id="r2">
+                            </h:selectBooleanCheckbox>
+                            <label>2.5</label><h:selectBooleanCheckbox class="r"
+                                                                       itemLabel="2.5" widgetVar="checkBox4"
+                                                                       id="r25">
+                        </h:selectBooleanCheckbox>
+                            <label>3</label>
+                            <h:selectBooleanCheckbox class="r"
+                                                     itemLabel="3" widgetVar="checkBox5"
+                                                     id="r3">
+                            </h:selectBooleanCheckbox>
+                        </div>
+                        <div id="wrong_field_R" class="wrong"></div>
+                        <div id="wrong_fields" class="wrong"></div>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <h:commandButton value="Добавить" styleClass="submit input_form_control_buttons_button_submit"
+                                     action="#{exampleBean.addEmployee()}">
+                        <f:ajax execute="newEmployeeForm" render="employeeTable"/>
+                    </h:commandButton>
 
-            <h:commandButton value="Очистить" styleClass="clear"
-                             action="#{exampleBean.clearEmployee()}">
-                <f:ajax execute="newEmployeeForm" render="employeeTable"/>
-            </h:commandButton>
-        </h:form>
+                    <h:commandButton value="Очистить" styleClass="clear"
+                                     action="#{exampleBean.clearEmployee()}">
+                        <f:ajax execute="newEmployeeForm" render="employeeTable"/>
+                    </h:commandButton>
+                </div>
+                <h:panelGroup styleClass="hidden_x">
+                    <h:inputHidden value="#{exampleBean.newEmployee.x}">
+                    </h:inputHidden>
+                </h:panelGroup>
+                <h:panelGroup styleClass="hidden_r">
+                    <h:inputHidden value="#{exampleBean.newEmployee.r}">
+                    </h:inputHidden>
+                </h:panelGroup>
+            </h:form>
+        </div>
 
         <h:panelGroup id="employeeTable">
             <h:dataTable styleClass="result_table" value="#{exampleBean.employees}" var="employee">
@@ -128,15 +143,15 @@
                     <f:facet name="header">R</f:facet>
                     <h:outputText value="#{employee.r}"/>
                 </h:column>
-                <!--                <h:column headerClass="variables">-->
-                <!--                    <f:facet name="header">Результат</f:facet>-->
-                <!--                    <h:outputText value="#{point.hitResult}"/>-->
-                <!--                </h:column>-->
+                <h:column headerClass="variables">
+                    <f:facet name="header">Результат</f:facet>
+                    <h:outputText value="#{employee.result}"/>
+                </h:column>
             </h:dataTable>
         </h:panelGroup>
 
         <div class="main-menu">
-            <h:link outcome="goMain">
+            <h:link styleClass="main_menu_link" outcome="goIndex">
                 На стартовую страницу!
             </h:link>
         </div>

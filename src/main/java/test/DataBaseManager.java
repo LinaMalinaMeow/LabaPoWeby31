@@ -1,5 +1,6 @@
 package test;
 
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.persistence.EntityManager;
@@ -9,8 +10,8 @@ import javax.annotation.Resource;
 import java.util.List;
 import java.util.Objects;
 
-@ManagedBean(name = "db")
-@ViewScoped
+@ManagedBean(name = "database")
+@ApplicationScoped
 public class DataBaseManager {
     private static final String PERSISTENCE_UNIT_NAME = "postgres";
 

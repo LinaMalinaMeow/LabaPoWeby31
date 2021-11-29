@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 let wrongFieldX = document.getElementById("wrong_field_X");
 let wrongFieldY = document.getElementById("wrong_field_Y");
 let wrongFieldR = document.getElementById("wrong_field_R");
+let wrongFields = document.getElementById("wrong_fields");
 let xVal;
 let yVal;
 let rVal;
@@ -43,48 +44,75 @@ function clickOnChart(canvas, event) {
     let y = (height / 2 - event.clientY + rect.top) / step;
     x = x.toFixed(2).replace(".00", "");
     y = y.toFixed(2).replace(".00", "");
-    if (isValid(x, y, rVal)) {
+    if ((checkX(x) && checkY(y) && checkR())) {
         xVal = x
         yVal = y
         $('.y').val(yVal);
         $('.hidden_x input[type=hidden]').val(xVal);
         $('.hidden_r input[type=hidden]').val(rVal);
         $(".submit").click();
-
     }
 }
 
 $('.input_form_control_buttons_button_submit').on('click', function (event) {
-
-    drawShoot(xVal, $('.y').val(), rVal)
+    yVal = $('.y').val()
+    drawShoot(xVal, yVal, rVal)
     wrongFieldX.textContent = ""
     wrongFieldY.textContent = ""
     wrongFieldR.textContent = ""
-    if (!checkY()) {
-        console.log("ya tyt")
+    if (!checkY() || !checkX() || !checkR()) {
         event.preventDefault()
     }
 });
 
 $('.clear').on('click', function (event) {
-
     clearCanvas();
     drawCanvas();
 });
 
-function checkY() {
-    yVal = $('.y').val();
-    console.log("y=" + yVal)
-    if (yVal === "") {
+function checkX(x=xVal) {
+    if(!x) {
+        wrongFieldX.textContent = "Поле X должно быть заполнено";
+        return false
+    }
+    if (!(x && !isNaN(x))) {
+        wrongFieldX.textContent = "X должен быть числом!";
+        return false;
+    }
+    if(!(x >= -5 && x <= 3)) {
+        wrongFieldX.textContent = "X должен принадлежать промежутку: [-5; 3]!";
+        return false
+    }
+    return true
+}
+
+function checkR(r=rVal) {
+    if(!r) {
+        wrongFieldR.textContent = "Поле R должно быть заполнено";
+        return false
+    }
+    if (!(r && !isNaN(r))) {
+        wrongFieldR.textContent = "R должен быть числом!";
+        return false;
+    }
+    if(!(r >= 1 && r <= 3)) {
+        wrongFieldR.textContent = "R должен принадлежать промежутку: [1; 3]!";
+        return false
+    }
+    return true
+}
+
+function checkY(y=yVal) {
+    if (y === "") {
         wrongFieldY.textContent = "Поле Y должно быть заполнено";
         return false;
     }
-    yVal = yVal.replace(",", ".")
-    if (!(yVal && !isNaN(yVal))) {
+    y = y.replace(",", ".")
+    if (!(y && !isNaN(y))) {
         wrongFieldY.textContent = "Y должен быть числом!";
         return false;
     }
-    if (!((yVal >= -5) && (yVal <= 3))) {
+    if (!((y > -5) && (y < 3))) {
         wrongFieldY.textContent = "Y должен принадлежать промежутку: (-5; 3)!";
         return false;
     }
@@ -92,5 +120,5 @@ function checkY() {
 }
 
 function isValid(x, y, r) {
-    return (x >= -5 && y <= 3) && (y >= -5 && y <= 3) && (r >= 1 && r <= 3);
+    return (x >= -5 && x <= 3) && (y > -5 && y < 3) && (r >= 1 && r <= 3);
 }

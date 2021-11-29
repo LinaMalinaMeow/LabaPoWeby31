@@ -49,7 +49,7 @@ public class Validator {
     }
 
     public static boolean isValid(double x, double y, double r) {
-        return (x >= -5 && x <= 3) && (y >= -5 && y <= 3) && (r >= 1 && r <= 3);
+        return (x >= -5 && x <= 3) && (y > -5 && y < 3) && (r >= 1 && r <= 3);
     }
 }
 
