@@ -108,8 +108,12 @@
                     </div>
                 </div>
                 <div class="buttons">
-                    <h:commandButton value="Добавить" styleClass="submit input_form_control_buttons_button_submit"
-                                     action="#{exampleBean.addEmployee()}">
+                    <h:commandButton value="Добавить" styleClass="submit input_form_control_buttons_button_submit">
+                        <f:ajax execute="newEmployeeForm" render="employeeTable"/>
+                    </h:commandButton>
+
+                    <h:commandButton styleClass="hidden-submit"
+                                     action="#{exampleBean.addEmployee()}" style="display: none">
                         <f:ajax execute="newEmployeeForm" render="employeeTable"/>
                     </h:commandButton>
 
@@ -156,8 +160,10 @@
             </h:link>
         </div>
 
+
         <h:outputScript library="js" name="main.js"/>
         <h:outputScript library="js" name="canvas.js"/>
+<!--        <h:outputScript library="primefaces" name="jquery/jquery.js" target="head"/>-->
     </ui:define>
 </ui:composition>
 </html>

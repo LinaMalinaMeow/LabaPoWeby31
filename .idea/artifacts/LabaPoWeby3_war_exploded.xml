@@ -6,6 +6,7 @@
         <exploded>true</exploded>
         <module>LabaPoWeby3</module>
         <packaging>war</packaging>
+        <unpackNestedArchives>false</unpackNestedArchives>
       </options>
     </properties>
     <root id="root">
@@ -14,6 +15,13 @@
           <element id="module-output" name="LabaPoWeby3" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: com.oracle.ojdbc:ojdbc10:19.3.0.0" />
+          <element id="library" level="project" name="Maven: com.oracle.ojdbc:ucp:19.3.0.0" />
+          <element id="library" level="project" name="Maven: com.oracle.ojdbc:oraclepki:19.3.0.0" />
+          <element id="library" level="project" name="Maven: com.oracle.ojdbc:osdt_cert:19.3.0.0" />
+          <element id="library" level="project" name="Maven: com.oracle.ojdbc:osdt_core:19.3.0.0" />
+          <element id="library" level="project" name="Maven: com.oracle.ojdbc:simplefan:19.3.0.0" />
+          <element id="library" level="project" name="Maven: com.oracle.ojdbc:ons:19.3.0.0" />
           <element id="library" level="project" name="Maven: org.primefaces:primefaces:10.0.0" />
           <element id="library" level="project" name="Maven: com.sun.faces:jsf-api:2.2.20" />
           <element id="library" level="project" name="Maven: org.postgresql:postgresql:42.2.20" />

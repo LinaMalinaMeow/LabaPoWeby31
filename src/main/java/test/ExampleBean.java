@@ -6,8 +6,10 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.ViewScoped;
-import javax.transaction.*;
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.NotSupportedException;
+import javax.transaction.SystemException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,20 +17,27 @@ import java.util.List;
 @ApplicationScoped
 @Data
 public class ExampleBean {
-    @ManagedProperty("#{database}")
-    private DataBaseManager dataBaseManager;
+
     private Employee newEmployee = new Employee();
 
-    private List<Employee> employees = new ArrayList<Employee>();
+    private List<Employee> employees = new ArrayList<>();
+
+    public List<Employee> getEmployees() {
+        loadEmployees();
+        return employees;
+    }
+
+    @ManagedProperty("#{database}")
+    private DataBaseManager dataBaseManager;
+
 
     @PostConstruct
     private void loadEmployees() {
-        employees = dataBaseManager.loadEmployee();
+        employees = dataBaseManager.loadEmployees();
     }
 
     public void addEmployee() {
-        System.out.println(newEmployee.toString());
-        if (Validator.isValidDate(newEmployee)){
+        if (Validator.isValidDate(newEmployee)) {
             try {
                 dataBaseManager.addEmployeeToDB(newEmployee);
             } catch (Exception e) {
@@ -41,13 +50,13 @@ public class ExampleBean {
 
     public void clearEmployee() {
         try {
-            for (Employee p:employees) {
+            for (Employee p : employees) {
                 dataBaseManager.clearBD(p);
             }
-            employees.clear();
-        } catch (SystemException | NotSupportedException | HeuristicRollbackException | HeuristicMixedException | RollbackException e) {
+        } catch (SystemException | NotSupportedException | HeuristicRollbackException | HeuristicMixedException e) {
             e.printStackTrace();
+        } finally {
+            employees.clear();
         }
-        employees.clear();
     }
 }

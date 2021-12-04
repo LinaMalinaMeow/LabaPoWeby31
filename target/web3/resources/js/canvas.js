@@ -10,11 +10,7 @@ let height = canvas.height;
 canvas.addEventListener('mousedown', event => clickOnChart(canvas, event));
 
 function drawCanvas() {
-    let valR = getR() * step;
-    drawAXIS()
-    drawRectangle(valR)
-    drawTriangle(valR)
-    drawCircle(valR)
+    drawWithoutPoints()
     drawPoints()
 }
 
@@ -105,8 +101,17 @@ function drawPoints() {
         });
     });
     for (let i = 0; i < rows.length; i++) {
-        drawShoot(rows[i]["X"], rows[i]["Y"], getR())
+        if(rows[i]["X"] && rows[i]["Y"])
+            drawShoot(rows[i]["X"], rows[i]["Y"], getR())
     }
+}
+
+function drawWithoutPoints() {
+    let valR = getR() * step;
+    drawAXIS()
+    drawRectangle(valR)
+    drawTriangle(valR)
+    drawCircle(valR)
 }
 
 function drawShoot(x, y, r) {

@@ -20,7 +20,7 @@
         <setting name="validation-enabled" value="true" />
         <datasource-mapping>
           <factory-entry name="default" />
-          <factory-entry name="postgres" />
+          <factory-entry name="postgres" value="f27195d7-ffbb-4359-b22c-0b3af6b77e38" />
         </datasource-mapping>
         <naming-strategy-map />
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />
@@ -41,6 +41,13 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="jquery-3.5.1" level="application" />
     <orderEntry type="library" name="jquery-3.6.0" level="application" />
+    <orderEntry type="library" name="Maven: com.oracle.ojdbc:ojdbc10:19.3.0.0" level="project" />
+    <orderEntry type="library" name="Maven: com.oracle.ojdbc:ucp:19.3.0.0" level="project" />
+    <orderEntry type="library" name="Maven: com.oracle.ojdbc:oraclepki:19.3.0.0" level="project" />
+    <orderEntry type="library" name="Maven: com.oracle.ojdbc:osdt_cert:19.3.0.0" level="project" />
+    <orderEntry type="library" name="Maven: com.oracle.ojdbc:osdt_core:19.3.0.0" level="project" />
+    <orderEntry type="library" name="Maven: com.oracle.ojdbc:simplefan:19.3.0.0" level="project" />
+    <orderEntry type="library" name="Maven: com.oracle.ojdbc:ons:19.3.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.primefaces:primefaces:10.0.0" level="project" />
     <orderEntry type="library" name="Maven: com.sun.faces:jsf-api:2.2.20" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.projectlombok:lombok:1.18.22" level="project" />

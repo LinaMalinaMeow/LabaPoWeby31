@@ -1,8 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    $('.r2').prop('checked', true);
-    rVal = 2;
-    console.log(getR())
-    drawCanvas()
+    $("[id='newEmployeeForm:r2']").click()
 });
 let wrongFieldX = document.getElementById("wrong_field_X");
 let wrongFieldY = document.getElementById("wrong_field_Y");
@@ -10,7 +7,10 @@ let wrongFieldR = document.getElementById("wrong_field_R");
 let wrongFields = document.getElementById("wrong_fields");
 let xVal;
 let yVal;
+let canvasX;
+let canvasY;
 let rVal;
+
 $('.x').on('click', function (event) {
     xVal = $(this).val();
     $(this).addClass('clicked');
@@ -45,29 +45,49 @@ function clickOnChart(canvas, event) {
     x = x.toFixed(2).replace(".00", "");
     y = y.toFixed(2).replace(".00", "");
     if ((checkX(x) && checkY(y) && checkR())) {
-        xVal = x
-        yVal = y
-        $('.y').val(yVal);
-        $('.hidden_x input[type=hidden]').val(xVal);
+        canvasX = x
+        canvasY = y
+        $('.y').val(y);
+        $('.hidden_x input[type=hidden]').val(x);
         $('.hidden_r input[type=hidden]').val(rVal);
-        $(".submit").click();
+        $(".hidden-submit").click();
     }
 }
 
 $('.input_form_control_buttons_button_submit').on('click', function (event) {
     yVal = $('.y').val()
-    drawShoot(xVal, yVal, rVal)
-    wrongFieldX.textContent = ""
-    wrongFieldY.textContent = ""
-    wrongFieldR.textContent = ""
     if (!checkY() || !checkX() || !checkR()) {
         event.preventDefault()
+    } else {
+        drawShoot(xVal, yVal, rVal)
+        canvasY = yVal
+        canvasX = xVal
+        wrongFieldX.textContent = ""
+        wrongFieldY.textContent = ""
+        wrongFieldR.textContent = ""
+        $('.hidden_x input[type=hidden]').val(xVal);
+        $('.hidden_r input[type=hidden]').val(rVal);
+        $(".hidden-submit").click();
     }
 });
 
+$('.hidden-submit').on('click', function (event) {
+    if (!checkY(canvasY) || !checkX(canvasX) || !checkR()) {
+        event.preventDefault()
+    } else {
+        drawShoot(canvasX, canvasY, rVal)
+        wrongFieldX.textContent = ""
+        wrongFieldY.textContent = ""
+        wrongFieldR.textContent = ""
+    }
+});
+
+
+
 $('.clear').on('click', function (event) {
     clearCanvas();
-    drawCanvas();
+    drawWithoutPoints();
+    /*drawCanvas();*/
 });
 
 function checkX(x=xVal) {

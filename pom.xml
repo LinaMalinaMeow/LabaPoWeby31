@@ -17,6 +17,12 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.oracle.ojdbc</groupId>
+            <artifactId>ojdbc10</artifactId>
+            <version>19.3.0.0</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
             <version>10.0.0</version>
