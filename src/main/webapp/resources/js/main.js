@@ -83,7 +83,6 @@ $('.hidden-submit').on('click', function (event) {
 });
 
 
-
 $('.clear').on('click', function (event) {
     clearCanvas();
     drawWithoutPoints();

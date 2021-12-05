@@ -70,6 +70,7 @@
                         <h:outputLabel styleClass="" value="Координата Y:"/>
                         <div>
                             <h:inputText styleClass="y" id="y"
+                                         maxlength="10"
                                          value="#{exampleBean.newEmployee.y}">
                             </h:inputText>
                         </div>
@@ -163,7 +164,7 @@
 
         <h:outputScript library="js" name="main.js"/>
         <h:outputScript library="js" name="canvas.js"/>
-<!--        <h:outputScript library="primefaces" name="jquery/jquery.js" target="head"/>-->
+        <!--        <h:outputScript library="primefaces" name="jquery/jquery.js" target="head"/>-->
     </ui:define>
 </ui:composition>
 </html>

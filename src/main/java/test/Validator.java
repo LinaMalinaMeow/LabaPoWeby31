@@ -52,4 +52,3 @@ public class Validator {
         return (x >= -5 && x <= 3) && (y > -5 && y < 3) && (r >= 1 && r <= 3);
     }
 }
-

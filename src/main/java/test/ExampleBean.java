@@ -6,10 +6,6 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.transaction.HeuristicMixedException;
-import javax.transaction.HeuristicRollbackException;
-import javax.transaction.NotSupportedException;
-import javax.transaction.SystemException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,10 +18,6 @@ public class ExampleBean {
 
     private List<Employee> employees = new ArrayList<>();
 
-    public List<Employee> getEmployees() {
-        loadEmployees();
-        return employees;
-    }
 
     @ManagedProperty("#{database}")
     private DataBaseManager dataBaseManager;
@@ -53,10 +45,14 @@ public class ExampleBean {
             for (Employee p : employees) {
                 dataBaseManager.clearBD(p);
             }
-        } catch (SystemException | NotSupportedException | HeuristicRollbackException | HeuristicMixedException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             employees.clear();
         }
+    }
+    public List<Employee> getEmployees() {
+        loadEmployees();
+        return employees;
     }
 }

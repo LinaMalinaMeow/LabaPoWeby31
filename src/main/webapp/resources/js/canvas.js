@@ -41,7 +41,6 @@ function drawRectangle(valR) {
     context.globalAlpha = 0.6;
     context.beginPath();
     context.fillRect(width / 2, height / 2, valR, -valR);
-
 }
 
 function drawAXIS() {
@@ -59,6 +58,7 @@ function drawAXIS() {
     context.strokeText("Y", 240, 10);
     context.strokeText("X", 500, height / 2 - 10);
     context.stroke();
+
     //draw x-dash
     for (let i = -5; i <= 5; i++) {
         context.beginPath();

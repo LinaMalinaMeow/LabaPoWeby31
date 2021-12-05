@@ -1,16 +1,10 @@
 package test;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.RollbackException;
-import javax.transaction.HeuristicMixedException;
-import javax.transaction.HeuristicRollbackException;
-import javax.transaction.NotSupportedException;
-import javax.transaction.SystemException;
 import java.util.List;
 
 @ManagedBean(name = "database")
@@ -40,7 +34,7 @@ public class DataBaseManager {
         entityManager.getTransaction().commit();
     }
 
-    public synchronized void clearBD(Employee employee) throws SystemException, NotSupportedException, HeuristicRollbackException, HeuristicMixedException, RollbackException {
+    public synchronized void clearBD(Employee employee){
         entityManager.getTransaction().begin();
         entityManager.remove(entityManager.merge(employee));
         entityManager.getTransaction().commit();
