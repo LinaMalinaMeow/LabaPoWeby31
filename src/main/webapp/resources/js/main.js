@@ -89,8 +89,8 @@ $('.clear').on('click', function (event) {
     /*drawCanvas();*/
 });
 
-function checkX(x=xVal) {
-    if(!x) {
+function checkX(x = xVal) {
+    if (!x) {
         wrongFieldX.textContent = "Поле X должно быть заполнено";
         return false
     }
@@ -98,15 +98,15 @@ function checkX(x=xVal) {
         wrongFieldX.textContent = "X должен быть числом!";
         return false;
     }
-    if(!(x >= -5 && x <= 3)) {
+    if (!(x >= -5 && x <= 3)) {
         wrongFieldX.textContent = "X должен принадлежать промежутку: [-5; 3]!";
         return false
     }
     return true
 }
 
-function checkR(r=rVal) {
-    if(!r) {
+function checkR(r = rVal) {
+    if (!r) {
         wrongFieldR.textContent = "Поле R должно быть заполнено";
         return false
     }
@@ -114,14 +114,14 @@ function checkR(r=rVal) {
         wrongFieldR.textContent = "R должен быть числом!";
         return false;
     }
-    if(!(r >= 1 && r <= 3)) {
+    if (!(r >= 1 && r <= 3)) {
         wrongFieldR.textContent = "R должен принадлежать промежутку: [1; 3]!";
         return false
     }
     return true
 }
 
-function checkY(y=yVal) {
+function checkY(y = yVal) {
     if (y === "") {
         wrongFieldY.textContent = "Поле Y должно быть заполнено";
         return false;
@@ -132,12 +132,8 @@ function checkY(y=yVal) {
         return false;
     }
     if (!((y > -5) && (y < 3))) {
-        wrongFieldY.textContent = "Y должен принадлежать промежутку: (-5; 3)!";
+        wrongFieldY.textContent = "Y должен быть от -5 до 3";
         return false;
     }
     return true;
-}
-
-function isValid(x, y, r) {
-    return (x >= -5 && x <= 3) && (y > -5 && y < 3) && (r >= 1 && r <= 3);
 }

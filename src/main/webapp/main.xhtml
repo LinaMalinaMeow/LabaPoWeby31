@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 
 
 <ui:composition template="WEB-INF/templates/master.xhtml">
@@ -68,11 +69,16 @@
                     </div>
                     <div class="coordinates-y">
                         <h:outputLabel styleClass="" value="Координата Y:"/>
+
                         <div>
-                            <h:inputText styleClass="y" id="y"
-                                         maxlength="10"
-                                         value="#{exampleBean.newEmployee.y}">
-                            </h:inputText>
+                            <p:inputText styleClass="y" id="y"
+                                             maxlength="10"
+                                             required="true"
+                                             value="#{exampleBean.newEmployee.y}">
+                                    <f:validator validatorId="yValidator"/>
+                                </p:inputText>
+
+                            <h:message for="y" id="yValidWrong"/>
                         </div>
                         <div id="wrong_field_Y" class="wrong"></div>
                     </div>
@@ -109,12 +115,12 @@
                     </div>
                 </div>
                 <div class="buttons">
-                    <h:commandButton value="Добавить" styleClass="submit input_form_control_buttons_button_submit">
+                    <h:commandButton value="Добавить" styleClass="submit input_form_control_buttons_button_submit" update="yValidWrong">
                         <f:ajax execute="newEmployeeForm" render="employeeTable"/>
                     </h:commandButton>
 
                     <h:commandButton styleClass="hidden-submit"
-                                     action="#{exampleBean.addEmployee()}" style="display: none">
+                                     action="#{exampleBean.addEmployee()}" style="display: none" update="yValidWrong">
                         <f:ajax execute="newEmployeeForm" render="employeeTable"/>
                     </h:commandButton>
 

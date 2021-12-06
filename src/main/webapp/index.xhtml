@@ -3,7 +3,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 
 <ui:composition template="WEB-INF/templates/master.xhtml">
     <ui:define name="main">
@@ -12,8 +13,11 @@
             <section class="main-container__item main-container__item_start">
 
                 <div class="date-time">
-                    <div id="date" class="date"></div>
-                    <div id="time" class="date"></div>
+                    <h:outputText id="date" styleClass="date" value="#{clock.localDate.format(clock.dtf)}"/> <p:poll
+                        interval="8" update="date"/>
+                    <br></br>
+                    <h:outputText id="time" styleClass="date" value="#{clock.localDate.format(clock.hf)}"/> <p:poll
+                        interval="8" update="time"/>
                 </div>
 
                 <div class="index-menu">
@@ -24,7 +28,6 @@
             </section>
         </main>
 
-        <h:outputScript library="js" name="time.js"/>
     </ui:define>
 
 </ui:composition>
